@@ -5,19 +5,26 @@ A scripted decision-tree chatbot that triages lost-package complaints. It resolv
 
 Built as a take-home for the Analyst / Solution Success role at eGain.
 
-SETUP:
+## Setup
+No installation or dependencies required — runs in any browser.
+1. Click the green **Code** button and select **Download ZIP**
+2. Extract the ZIP file
+3. Open `index.html` in your browser
+Or via command line:
+```bash
+git clone <your-repo-url>
+cd <repo-folder>
+open index.html
 
-Click on the green button that says "Code" and download the ZIP file
+The bot looks up tracking numbers against a demo database. Use any of
+these valid numbers to test the happy path:
+| Tracking number | Status | Last update |
+|---|---|---|
+| `PKG123456` | In transit | Arrived at regional facility |
+| `PKG789012` | Delivered | Left at front door |
+| `PKG000001` | Lost | No scan in 7 days |
+Any other valid `PKG...` format tests the not-found → retry → escalation path.
 
-Extract the file in your downloads folder or wherever you may want it! 
-
-Go into the extracted file and click on the index.html file!
-
-One of the features is to look for a package number. Below I've given a list of valid package numbers you may try to give to the chat bot
-List:
-PKG123456
-PKG789012
-PKG000001
 
 # Conversation Flow
 ```mermaid
