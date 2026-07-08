@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blank Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button id="restart-button" type="button" class="restart-button hidden">Restart the Page</button>
+  <main class="page-center">
+    <div id="chat-app" class="chat-app hidden">
+      <div id="chat-log" class="chat-log" aria-live="polite"></div>
+      <div class="chat-bottom-dock">
+        <form id="chat-form" class="chat-input-bar">
+          <input id="chat-input" type="text" autocomplete="off" placeholder="Type a number or message..." />
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="package.js"></script>
+  <script src="support.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
