@@ -19,8 +19,9 @@ cd <repo-folder>
 open index.html
 ```
 
-#Test Data The bot looks up tracking numbers against a demo database. Use any of
-these valid numbers to test the happy path:
+## Test Data 
+
+The bot looks up tracking numbers against a demo database. Use any of these valid numbers to test the happy path:
 | Tracking number | Status      | Last update                    |
 |-----------------|-------------|--------------------------------|
 | `PKG123456`     | In transit  | Arrived at regional facility   |
