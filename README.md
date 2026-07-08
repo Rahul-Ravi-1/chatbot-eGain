@@ -1,5 +1,18 @@
 # chatbot-eGain
-Chatbot Design Scenario based on a user having problems with a lost package
+Lost Package Support Bot
+
+A scripted decision-tree chatbot that triages lost-package complaints. It resolves simple tracking lookups directly and escalates everything else to a live agent with the collected info and a case number — so the customer never repeats themselves and never hits a dead end.
+
+Built as a take-home for the Analyst / Solution Success role at eGain.
+
+SETUP:
+
+git clone <YOUR_REPO_URL>
+cd <YOUR_REPO_FOLDER>
+# open index.html in a browser
+
+
+
 ```mermaid
 flowchart TB
     A(["User clicks Chatbot Assistance"]) --> B["Show 4 menu options (Options 2–4 are demo only)"]
@@ -29,9 +42,10 @@ flowchart TB
      J:::decision
      L:::decision
      N:::agent
-    classDef user fill:#eef2ff,stroke:#818cf8
-    classDef decision fill:#fefce8,stroke:#facc15
+    classDef user fill:#eef2ff,stroke:#818cf8,color:#000000
+    classDef decision fill:#fefce8,stroke:#facc15,color:#000000
     classDef agent fill:#fff1f2,stroke:#fb7185
     style K fill:#00C853
     style M fill:#00C853
 ```
+
