@@ -7,12 +7,19 @@ Built as a take-home for the Analyst / Solution Success role at eGain.
 
 SETUP:
 
-git clone <YOUR_REPO_URL>
-cd <YOUR_REPO_FOLDER>
-# open index.html in a browser
+Click on the green button that says "Code" and download the ZIP file
 
+Extract the file in your downloads folder or wherever you may want it! 
 
+Go into the extracted file and click on the index.html file!
 
+One of the features is to look for a package number. Below I've given a list of valid package numbers you may try to give to the chat bot
+List:
+PKG123456
+PKG789012
+PKG000001
+
+# Conversation Flow
 ```mermaid
 flowchart TB
     A(["User clicks Chatbot Assistance"]) --> B["Show 4 menu options (Options 2–4 are demo only)"]
@@ -49,3 +56,20 @@ flowchart TB
     style M fill:#00C853
 ```
 
+# Approach
+
+This bot takes a CLI-stylistic approach and has a determinsitic state logic. Each state has a prompt , an input validator , and transitions into the next state. There is no fuzzy logic anywhere so every path is testable and predictable.
+
+Here are the decisions I made on the design:
+
+1. Free-Text intake first - Customers may vent out their frustration and/or may give us information that they may know we are looking for already. In this case the bot scans for a package number within that text and sees if we can extract it without needing to prompt for it directly
+
+2. Retry caps on every prompt. Each input gets a maximum of 2 retries. After that, the both stops asking and escalates. The user is never trapped in a validation loop
+
+3.Every path terminates. Each conversation ends in exactly one of two states: Either it is resolved by the bot or handed off to a live agen with all collected info and a case number attatched. The agent never starts from zero, and the customer leaves with a reference number. 
+
+# Error Handling
+
+1. Menu Input Validation - The menu accepted digits 1-4 only. Anything else triggers a reprompt.
+
+2. Tracking number format validation - Tracking numbers must match the expected format. A malformed number triggers a reprompt with an example of the correct format. After 2 failed attempts the bot will escalate with the info it has to a live agent
