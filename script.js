@@ -105,7 +105,7 @@ function renderMessages() {
   chatLog.appendChild(inner);
   chatLog.scrollTop = chatLog.scrollHeight;
 }
-
+let menuAttempts = 0;
 function handleStep(input) {
   if (currentStep === "greeting") {
     if (input === "1") {
@@ -118,8 +118,16 @@ function handleStep(input) {
     } else if (input === "4") {
       addBot(DEMO_ONLY_MESSAGE);
     } else {
+      menuAttempts++;
+      if (menuAttempts >= 3) {
+        handoffToLiveAgent(
+          "I'm having trouble understanding your selection. I'm connecting you with a live agent."
+        );
+        return;
+      }
       addBot("Please enter a number from the list above (1–4).");
     }
+    
     return;
   }
 
