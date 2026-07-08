@@ -64,7 +64,7 @@ flowchart TB
     classDef agent fill:#fff1f2,stroke:#fb7185
     style K fill:#00C853
     style M fill:#00C853
-```mermaid
+```
 
 # Approach
 
