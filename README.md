@@ -83,3 +83,14 @@ Here are the decisions I made on the design:
 1. Menu Input Validation - The menu accepted digits 1-4 only. Anything else triggers a reprompt.
 
 2. Tracking number format validation - Tracking numbers must match the expected format. A malformed number triggers a reprompt with an example of the correct format. After 2 failed attempts the bot will escalate with the info it has to a live agent
+
+# Screenshots
+
+### Happy path — package found
+![Package found in database](Images/FoundPackage.png)
+
+### No package number in description
+![Bot prompts for tracking number](Images/NoInfoGiven.png)
+
+### Package not in database
+![Package not found — retry and escalation](Images/PackageNotInDB.png)
