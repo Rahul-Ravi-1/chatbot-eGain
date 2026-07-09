@@ -1,5 +1,4 @@
-# chatbot-eGain
-Lost Package Support Bot
+# Lost Package Support Bot
 
 A scripted decision-tree chatbot that triages lost-package complaints. It resolves simple tracking lookups directly and escalates everything else to a live agent with the collected info and a case number — so the customer never repeats themselves and never hits a dead end.
 
@@ -14,9 +13,9 @@ No installation or dependencies required — runs in any browser.
 
 Or via command line:
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
-open index.html
+git clone https://github.com/Rahul-Ravi-1/chatbot-eGain.git
+cd chatbot-eGain
+start index.html
 ```
 
 ## Test Data 
@@ -69,21 +68,38 @@ flowchart TB
 
 # Approach
 
-This bot takes a CLI-stylistic approach and has a determinsitic state logic. Each state has a prompt , an input validator , and transitions into the next state. There is no fuzzy logic anywhere so every path is testable and predictable.
+The bot presents a terminal-style chat interface backed by a deterministic
+state machine. Each state has a prompt, an input validator, and a transition
+to the next state. There is no fuzzy logic anywhere, so every path is
+testable and predictable.
 
-Here are the decisions I made on the design:
 
-1. Free-Text intake first - Customers may vent out their frustration and/or may give us information that they may know we are looking for already. In this case the bot scans for a package number within that text and sees if we can extract it without needing to prompt for it directly
+Design decisions:
 
-2. Retry caps on every prompt. Each input gets a maximum of 2 retries. After that, the both stops asking and escalates. The user is never trapped in a validation loop
+1. **Free-text intake first** — Customers often vent and volunteer
+   information in their first message. The bot scans that text for a
+   package number and extracts it automatically, so well-formed requests
+   skip a prompt entirely.
 
-3.Every path terminates. Each conversation ends in exactly one of two states: Either it is resolved by the bot or handed off to a live agen with all collected info and a case number attatched. The agent never starts from zero, and the customer leaves with a reference number. 
+2. **Retry caps on every prompt** — Each input gets a maximum of 2 retries.
+   After that, the bot stops asking and escalates. The user is never
+   trapped in a validation loop.
+
+3. **Every path terminates** — Each conversation ends in exactly one of two
+   states: resolved by the bot, or handed off to a live agent with all
+   collected info and a case number attached. The agent never starts from
+   zero, and the customer always leaves with a reference number.
 
 # Error Handling
 
-1. Menu Input Validation - The menu accepted digits 1-4 only. Anything else triggers a reprompt.
+1. **Menu input validation** — The menu accepts digits 1–4 only. Anything
+   else triggers a reprompt; after 2 failed attempts the bot hands off to
+   a live agent.
 
-2. Tracking number format validation - Tracking numbers must match the expected format. A malformed number triggers a reprompt with an example of the correct format. After 2 failed attempts the bot will escalate with the info it has to a live agent
+2. **Tracking number format validation** — Tracking numbers must match the
+   expected format. A malformed number triggers a reprompt with an example
+   of the correct format; after 2 failed attempts the bot escalates with
+   whatever info it has.
 
 # Screenshots
 
